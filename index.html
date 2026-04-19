@@ -17,7 +17,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* --- 🚀 PREMIUM GLOBAL-STANDARD CSS (BRAND PROMOTER PAGE) --- */
+/* --- 🚀 PREMIUM GLOBAL-STANDARD CSS --- */
 :root {
   --g: #29b546;       /* Multimedia Green */
   --g-dark: #1b8a30; 
@@ -88,8 +88,8 @@ h1 span { color: var(--g); background: linear-gradient(115deg, #fff, var(--g), v
 .main-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
 .mt-btn { padding: 15px 35px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid var(--bdr); color: var(--gray); border-radius: 40px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px; }
 .mt-btn span { background: rgba(255,255,255,0.1); padding: 3px 12px; border-radius: 20px; font-size: 0.85rem; color: #fff; }
-.mt-btn.active, .mt-btn:hover { background: var(--g); color: #000; border-color: var(--g); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(41,181,70,0.3); }
-.mt-btn.active span, .mt-btn:hover span { background: rgba(0,0,0,0.2); color: #000; }
+.mt-btn.active, .mt-btn:hover { background: var(--g); color: #fff; border-color: var(--g); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(41,181,70,0.3); }
+.mt-btn.active span, .mt-btn:hover span { background: rgba(0,0,0,0.2); color: #fff; }
 
 .tab-content { display: none; animation: fadeIn 0.4s ease; }
 .tab-content.active { display: block; }
@@ -112,9 +112,9 @@ h1 span { color: var(--g); background: linear-gradient(115deg, #fff, var(--g), v
 
 .badge { display: inline-flex; align-self: flex-start; padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 15px; text-transform: uppercase; }
 .top-rated { background: linear-gradient(90deg, #ffcf00, #ffaa00); color: #000; }
-.level-2 { background: var(--cyn); color: #000; }
+.level-2 { background: var(--cyn); color: #fff; }
 .level-1 { background: var(--purp); color: #fff; }
-.new-seller { background: var(--g); color: #000; }
+.new-seller { background: var(--g); color: #fff; }
 .card.is-top-rated { border-color: rgba(255, 207, 0, 0.4); background: linear-gradient(180deg, rgba(255,207,0,0.08) 0%, var(--card-bg) 100%); }
 
 .i { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
@@ -132,6 +132,7 @@ h1 span { color: var(--g); background: linear-gradient(115deg, #fff, var(--g), v
 .p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 55px; height: 55px; background: rgba(255,255,255,0.15); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; z-index: 2; transition: 0.4s; }
 .v:hover .p { background: var(--g); color: #fff; border-color: var(--g); transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 25px rgba(41,181,70,0.5); }
 .v.playing .p, .v.playing img { opacity: 0; pointer-events: none; }
+/* ✅ FIXED Z-INDEX FOR IFRAME SO IT CAN BE CLICKED */
 .v iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; z-index: 5; }
 
 .img-box { position: relative; border-radius: 16px; overflow: hidden; background: #000; height: 0; padding-bottom: 125%; cursor: pointer; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); }
@@ -220,7 +221,7 @@ h1 span { color: var(--g); background: linear-gradient(115deg, #fff, var(--g), v
 .contact-section h2 span { color: var(--cyn); }
 .contact-section p { color: #cbd5e1; font-size: 1.15rem; margin-bottom: 40px; max-width: 650px; margin-inline: auto; }
 
-/* --- 🧠 HEAVY SEO FOOTER SECTION (Kept above universal footer) --- */
+/* --- 🧠 HEAVY SEO SECTION --- */
 .seo-section { background: #020617; border-top: 1px solid var(--bdr); padding: 80px 20px; position: relative; z-index: 1; }
 .seo-inner { max-width: 1200px; margin: auto; }
 .seo-inner h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; margin-bottom: 25px; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); line-height: 1.3; }
@@ -515,6 +516,11 @@ h1 span { color: var(--g); background: linear-gradient(115deg, #fff, var(--g), v
 
 <div id="footer-placeholder"></div>
 
+<a href="https://wa.me/8801915706375?text=Hello%20Multimedia%20Gen!%20I%20am%20visiting%20your%20website%20and%20need%20assistance." class="fixed bottom-8 right-8 bg-[#25D366] text-white rounded-full flex items-center gap-3 py-3 px-6 shadow-[0_15px_35px_rgba(0,0,0,0.5)] z-[9999] hover:-translate-y-2 hover:scale-105 transition-all duration-300 font-bold" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp text-2xl"></i>
+  <span class="hidden md:inline">Live Support</span>
+</a>
+
 <script>
 // --- FULL DATA ARRAYS WITH LOCATIONS ---
 const rawPromoters = [
@@ -700,6 +706,7 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
     const id = item.id ? item.id : item.i;
     const typeLabel = type === 'voice' ? 'Voice Artist' : (type === 'model' ? 'Model' : 'Brand Promoter');
     
+    // Apply Default Location if not provided
     const locationStr = item.loc ? item.loc : "Dhaka";
     
     const msg = encodeURIComponent(`Hello Multimedia Gen!\nI am interested in booking this ${typeLabel}:\nName: ${name}\nID: ${id}\nLocation: ${locationStr}\n\nPlease share the package details.`);
@@ -755,6 +762,7 @@ function renderExtraGallery() {
     document.getElementById('extra-gallery').innerHTML = galleryHtml;
 }
 
+// --- GLOBALS & EVENTS (FIXED VIDEO PLAYBACK) ---
 window.playVideo = function(el, id) {
   const isPlaying = el.classList.contains('playing');
   
