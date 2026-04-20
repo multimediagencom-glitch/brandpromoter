@@ -73,16 +73,6 @@ h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 900; letter-spacing: -0
 h1 span { color: transparent; background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; }
 .sub-text { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); font-weight: 500; margin-bottom: 30px; max-width: 800px; margin-inline: auto; }
 
-/* Embedded Hero Video */
-.hero-video-wrapper {
-    max-width: 850px; margin: 0 auto 40px; border-radius: 20px; overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3); aspect-ratio: 16/9; position: relative;
-    border: 1px solid var(--border-light); background: #000;
-}
-.hero-video-wrapper iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
-}
-
 /* Buttons */
 .cta-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
 .btn { padding: 16px 35px; border-radius: 999px; font-size: 1.05rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; cursor: pointer; }
@@ -145,7 +135,7 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 .rating { display: flex; align-items: center; gap: 6px; margin-bottom: 20px; color: var(--gold); }
 .rating span { color: var(--text-main); font-size: 0.95rem; font-weight: 700; }
 
-/* Media Containers */
+/* Media Containers (Video/Image) */
 .v { position: relative; border-radius: 16px; overflow: hidden; background: #000; height: 0; padding-bottom: 56.25%; cursor: pointer; margin-bottom: 20px; border: 1px solid var(--border-light); }
 .v img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; opacity: 0.85; z-index: 1; }
 .v:hover img { transform: scale(1.05); opacity: 1; filter: blur(2px); }
@@ -153,9 +143,11 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 .card:hover .p { opacity: 0; }
 .v.playing .p, .v.playing img, .v.playing .quick-stats { display: none !important; opacity: 0 !important; }
 
-.img-box { position: relative; border-radius: 16px; overflow: hidden; background: #000; height: 0; padding-bottom: 125%; cursor: pointer; margin-bottom: 20px; border: 1px solid var(--border-light); }
-.img-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.img-box:hover img { transform: scale(1.05); }
+/* HERO VIDEO FIX (BULLETPROOF) */
+.hero-video { max-width: 850px; margin: 0 auto 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); border-radius: 20px; }
+.hero-video .p { width: 80px; height: 80px; font-size: 2rem; background: var(--brand-green); border: none; }
+.hero-video:hover .p { background: #ff0000; box-shadow: 0 0 30px rgba(255,0,0,0.6); transform: translate(-50%, -50%) scale(1.1); }
+.hero-video:hover img { filter: none; } /* No blur for hero image on hover */
 
 /* Card Buttons */
 .b { display: flex; flex-direction: column; gap: 12px; margin-top: auto; }
@@ -267,12 +259,14 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
       <h1>Top Brand Promoters <br><span>& Models in BD</span></h1>
       <p class="sub-text">Drive real sales with professional video models, voice artists, and content creators. We deliver premium talent paired with strategic execution for high-converting digital campaigns.</p>
       
-      <div class="hero-video-wrapper">
-          <iframe src="https://www.youtube.com/embed/t9L_tpxULPY?rel=0&modestbranding=1" title="Multimedia Gen Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="v hero-video" onclick="playInlineVideo(this, 't9L_tpxULPY')">
+          <img src="https://i.ytimg.com/vi_webp/t9L_tpxULPY/maxresdefault.webp" loading="lazy" alt="Multimedia Gen Intro Video">
+          <div class="p"><i class="fas fa-play"></i></div>
       </div>
 
       <div class="cta-group">
         <a href="#roster-section" class="btn btn-secondary"><i class="fas fa-users"></i> Select Talent</a>
+        <a href="https://www.multimediagen.com/models" class="btn btn-secondary"><i class="fas fa-image"></i> View Model Gallery</a>
         <a href="https://wa.me/8801915706375?text=Hello%20Multimedia%20Gen!%20I%20want%20to%20book%20a%20brand%20promoter." class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Book Now</a>
       </div>
     </header>
@@ -286,7 +280,6 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
       <div class="main-tabs">
         <button class="mt-btn active" onclick="switchTab('promoters')"><i class="fas fa-users"></i> Brand Promoters <span>40</span></button>
         <button class="mt-btn" onclick="switchTab('voice')"><i class="fas fa-microphone-alt"></i> Voice Artists <span>18</span></button>
-        <button class="mt-btn" onclick="switchTab('models')"><i class="fas fa-image"></i> Model Images <span>27</span></button>
         <button class="mt-btn" onclick="switchTab('recent')" style="border-color: rgba(255,0,0,0.5);"><i class="fab fa-youtube" style="color: #ff0000;"></i> See Demo <span>New</span></button>
       </div>
 
@@ -314,18 +307,6 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
         </div>
         
         <div class="grid" id="grid-voice"></div>
-      </div>
-
-      <div id="tab-models" class="tab-content">
-        <div class="s"><input type="text" id="s-model" placeholder="Search model photos..."><i class="fas fa-search"></i></div>
-        
-        <div class="f" id="f-model">
-          <button class="active" data-f="all">All Models</button>
-          <button data-f="female">Female</button>
-          <button data-f="male">Male</button>
-        </div>
-        
-        <div class="grid" id="grid-model"></div>
       </div>
 
       <div id="tab-recent" class="tab-content">
@@ -624,36 +605,6 @@ const voiceArtists = [
   {i:'MG-VA-18',n:'Ayesha Aktar Rani',g:'female',rating:4.6,v:'l0wXoJ1FwEo',d:'l0wXoJ1FwEo',t:'y'}
 ];
 
-const modelImages = [
-  {name: "RJ Opu", id: "MG-IMG-01", gender: "male", img: "1Umxb1TpIM92XTbel4l0Gzz8T6pJHHjb0"},
-  {name: "Abu Sayeed Mohammad Nafi", id: "MG-IMG-02", gender: "male", img: "179BO6SlewmVYhsLRxP8y7crer9AA0H4D", loc: "Rampura, Dhaka"},
-  {name: "Ashik Ahamed", id: "MG-IMG-03", gender: "male", img: "1p4z5eHlVfpHADcFB8vKLchUM5VqpJN6A"},
-  {name: "Sheikh Nusrat Priya", id: "MG-IMG-04", gender: "female", img: "1QglD0WtJ7YyISQ4uMWssyBw_XC1Oj3oV"},
-  {name: "Niyaz Afridi", id: "MG-IMG-05", gender: "male", img: "11_6VmpxSrGSaPwMHFR1QmxR44tDPL0YI"},
-  {name: "Sadia Islam", id: "MG-IMG-06", gender: "female", img: "1kLPkSP3-iCNJIdRDuuyHDepWYHC8dwQE"},
-  {name: "Maha", id: "MG-IMG-07", gender: "female", img: "1SJkRt7NMHMQUp1hdwXOo3z0a6LqLNFFG", loc:"Dhaka"},
-  {name: "Sabrina Tanjin Tanfe", id: "MG-IMG-08", gender: "female", img: "1VVCYqmJS_Fr71PuNTwwiOJLHHAKpzl48", loc:"Uttara, Dhaka"},
-  {name: "Sanjida HuQe Tayeba", id: "MG-IMG-09", gender: "female", img: "1Alvd0-uPD1_xzFoIMvoaQlEaKg5alBOF"},
-  {name: "Nahar Barna", id: "MG-IMG-10", gender: "female", img: "1b5j5jLYR3Hs11xzVpUlwr-cbkFgFUBrc"},
-  {name: "Tahsin Hossain Rahi", id: "MG-IMG-11", gender: "male", img: "1zCaPDOqRjbfZ278VGg84Tno_o1DCZX7J"},
-  {name: "Sumaiya Akter Putul", id: "MG-IMG-12", gender: "female", img: "1ocEv37zGrFffF_SsDsfYyKm1zlCAevJj"},
-  {name: "Hemaet Tanvir", id: "MG-IMG-13", gender: "male", img: "1HZqHOwaJgsUWjulPuGVC2MczCy1lSTF4", loc:"Mohammadpur, Dhaka"},
-  {name: "Mahbuba", id: "MG-IMG-14", gender: "female", img: "1iGVNqTfUYTTPFAQIx5I7qFO0YDjzCn8l", loc:"Arichpur, Amzad ali girls school, Tongi, gazipur"},
-  {name: "Jahid Iqbal", id: "MG-IMG-15", gender: "male", img: "1gz1tg2mlPxo-RRIk5EtmO8To4xvJS2eF"},
-  {name: "Eshrat Jahan Disha", id: "MG-IMG-16", gender: "female", img: "1TvnbOZ2rrFMK7BjbDrXMBL0n_DQOfU4u"},
-  {name: "Fahad Abdullah", id: "MG-IMG-17", gender: "male", img: "1jf_Zls8rxDpErmljSMW_ztZIWw8yjHOS"},
-  {name: "Srabon Ahmed Sani", id: "MG-IMG-18", gender: "male", img: "1YXvAHhwCTLVTGqmGIC7mrw6ROX91eUst"},
-  {name: "Urmi Islam", id: "MG-IMG-19", gender: "female", img: "1ljh5CG_a_KU5gpj3eNBenHHJR2_MqBne"},
-  {name: "Raika Rowshan Oishy", id: "MG-IMG-20", gender: "female", img: "1VRDAEYl9zjeBdQ9YT9OEMa_e4wOEEsWe"},
-  {name: "Jannatul Nusrat Rahman", id: "MG-IMG-21", gender: "female", img: "1UmdNCRFJmq4jasp4CcKhVMGLXXbmHNGh"},
-  {name: "Hamim Jabir", id: "MG-IMG-22", gender: "male", img: "1gwm-6Ga0kzQl-K45VuEpEsAcxfO4Y1gc"},
-  {name: "Mymuna Keya", id: "MG-IMG-23", gender: "female", img: "1hcGiNRk34JfzA29Ul1woF8RoZjJwa9aQ"},
-  {name: "Nomanuzzman Mahen", id: "MG-IMG-24", gender: "male", img: "1-vqLRmUodGf4QtDUEWPcY4IwsnIDrUUJ"},
-  {name: "Moumita Debnath", id: "MG-IMG-25", gender: "female", img: "1BEQCAXxcKfHRTtuU6TcC5luxtJzTlnRu"},
-  {name: "Romana Tanha", id: "MG-IMG-26", gender: "female", img: "1essj2ajoWuSrF6AmWIMdlQXYJNhHjUl0"},
-  {name: "AL Ashraf", id: "MG-IMG-27", gender: "male", img: "1A_ERBh3QMa8uN1FYIS2FzLQ5rpLftrc2"}
-];
-
 // Processing Logic
 const premiumNames = new Set(["RJ Opu", "Abu Sayeed Mohammad Nafi", "Ashik Ahamed", "Sheikh Nusrat Priya", "Niyaz Afridi", "Moumita Debnath", "Fahad Abdullah Al Azad", "Nahar Barna", "Tahsin Hossain Rahi", "Raika Rowshan Oishy", "Habiba", "Eshrat Jahan Disha", "Reya Rahman", "Md Usman Gani"]);
 rawPromoters.forEach(p => { p.isTopRanked = premiumNames.has(p.name); });
@@ -689,7 +640,7 @@ voiceArtists.forEach((a, index) => {
 });
 
 // Render Utilities
-let pFilter = 'all'; let vFilter = 'all'; let mFilter = 'all';
+let pFilter = 'all'; let vFilter = 'all';
 
 function renderStars(r){
   let s = '';
@@ -701,7 +652,6 @@ const getDemoLink = (d, t='d') => {
   if(!t || typeof t === 'undefined') return d.startsWith('http') ? d : `https://drive.google.com/drive/folders/${d}`;
   return t === 'd' ? `https://drive.google.com/drive/folders/${d}` : t === 'y' ? `https://youtu.be/${d}` : d;
 }
-const getDriveImg = (id) => `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
 
 function renderGrid(arr, filterVal, containerId, searchInputId, type) {
   const q = document.getElementById(searchInputId).value.toLowerCase();
@@ -726,33 +676,12 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
     const locationStr = item.loc ? item.loc : "Dhaka";
     const verifiedBadge = item.badgeClass === 'top-rated' ? '<i class="fas fa-check-circle verified" title="Verified Premium Talent"></i>' : '';
     
-    let bestForStr = type === 'voice' ? 'TVCs, Dubbing, Narration' : (type === 'model' ? 'Fashion, Product, Catalog' : 'TikTok, Reels, Video Ads');
+    let bestForStr = type === 'voice' ? 'TVCs, Dubbing, Narration' : 'TikTok, Reels, Video Ads';
     let languageStr = 'Bangla, English (Basic)';
     
     const msg = encodeURIComponent(`Hello Multimedia Gen!\nI am interested in booking this ${typeLabel}:\nName: ${name}\nID: ${id}\nLocation: ${locationStr}\n\nPlease share the package details.`);
     const wa = `https://wa.me/8801915706375?text=${msg}`;
     
-    if(type === 'model') {
-      return `<div class="card">
-        <div class="i">
-          <div class="img-box">
-            <img src="${getDriveImg(item.img)}" loading="lazy" alt="${name} Portfolio">
-            <div class="quick-stats">
-                <p><span>Languages:</span> ${languageStr}</p>
-                <p><span>Best For:</span> ${bestForStr}</p>
-                <p><span>Availability:</span> Pre-booking required</p>
-            </div>
-          </div>
-          <h2>${name} ${verifiedBadge}</h2>
-          <div class="id">${id}</div>
-          <div class="location"><i class="fas fa-map-marker-alt"></i> ${locationStr}</div>
-          <div class="b" style="margin-top: 15px;">
-            <a href="${wa}" target="_blank" rel="noopener" class="wa"><i class="fab fa-whatsapp"></i> Book Model</a>
-          </div>
-        </div>
-      </div>`;
-    }
-
     const video = item.video ? item.video : item.v;
     const demoLink = getDemoLink(item.demo || item.d, item.t);
     
@@ -763,8 +692,9 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
         <div class="id">${id}</div>
         <div class="location"><i class="fas fa-map-marker-alt"></i> ${locationStr}</div>
         <div class="rating">${renderStars(item.rating)} <span>${item.rating.toFixed(1)}</span></div>
+        
         <div class="v" onclick="playInlineVideo(this, '${video}')">
-          <img src="https://i.ytimg.com/vi_webp/${video}/hqdefault.webp" loading="lazy" width="320" height="180" alt="${name}">
+          <img src="https://i.ytimg.com/vi_webp/${video}/maxresdefault.webp" onerror="this.onerror=null; this.src='https://i.ytimg.com/vi_webp/${video}/hqdefault.webp';" loading="lazy" alt="${name}">
           <div class="p"><i class="fas fa-play"></i></div>
           <div class="quick-stats">
               <p><span>Languages:</span> ${languageStr}</p>
@@ -772,6 +702,7 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
               <p><span>Response:</span> Typically within 2 hrs</p>
           </div>
         </div>
+        
         <div class="b">
           <div class="top-buttons">
             <a href="${demoLink}" target="_blank" rel="noopener">${type === 'voice' ? 'LISTEN AUDIO' : 'VIEW PORTFOLIO'}</a>
@@ -784,24 +715,21 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
 }
 
 // ✅ 100% BULLETPROOF MOBILE VIDEO PLAY FIX
-// By completely overwriting the container with an iframe, there are no overlapping elements left to block clicks on phones.
 window.playInlineVideo = function(el, id) {
   if (!id || id === 'undefined') return;
 
   const isPlaying = el.classList.contains('playing');
   
   // Stop all other playing videos
-  document.querySelectorAll('.v.playing').forEach(v => {
+  document.querySelectorAll('.v.playing, .hero-video.playing').forEach(v => {
       if (v !== el) {
           v.classList.remove('playing');
-          // We don't restore the image here to save memory, but we could if needed. 
-          // For now, removing the iframe is enough.
-          v.innerHTML = ''; 
+          v.innerHTML = ''; // Clear iframe
       }
   });
     
   if(!isPlaying){
-    // Replace the entire inner HTML with JUST the iframe. Nothing can block it now.
+    // Replace content completely with iframe to avoid mobile touch blocks
     el.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 50; background-color: #000;"></iframe>`;
     el.classList.add('playing');
   }
@@ -814,6 +742,10 @@ window.switchTab = function(tabId) {
   
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + tabId).classList.add('active');
+  
+  // Stop any playing video when switching tabs
+  document.querySelectorAll('.v.playing iframe').forEach(ifr => ifr.remove());
+  document.querySelectorAll('.v.playing').forEach(v => v.classList.remove('playing'));
 }
 
 // Filter Event Listeners
@@ -829,21 +761,13 @@ document.querySelectorAll('#f-voice button').forEach(b => b.addEventListener('cl
   renderGrid(voiceArtists, vFilter, 'grid-voice', 's-voice', 'voice');
 }));
 
-document.querySelectorAll('#f-model button').forEach(b => b.addEventListener('click', (e) => {
-  document.querySelectorAll('#f-model button').forEach(x => x.classList.remove('active'));
-  e.target.classList.add('active'); mFilter = e.target.dataset.f;
-  renderGrid(modelImages, mFilter, 'grid-model', 's-model', 'model');
-}));
-
 document.getElementById('s-promoter').addEventListener('input', () => renderGrid(rawPromoters, pFilter, 'grid-promoter', 's-promoter', 'promoter'));
 document.getElementById('s-voice').addEventListener('input', () => renderGrid(voiceArtists, vFilter, 'grid-voice', 's-voice', 'voice'));
-document.getElementById('s-model').addEventListener('input', () => renderGrid(modelImages, mFilter, 'grid-model', 's-model', 'model'));
 
 // Initialization
 document.addEventListener("DOMContentLoaded", function() {
   renderGrid(rawPromoters, 'all', 'grid-promoter', 's-promoter', 'promoter');
   renderGrid(voiceArtists, 'all', 'grid-voice', 's-voice', 'voice');
-  renderGrid(modelImages, 'all', 'grid-model', 's-model', 'model');
 
   const reveals = document.querySelectorAll('.reveal');
   const timeline = document.getElementById('timeline');
