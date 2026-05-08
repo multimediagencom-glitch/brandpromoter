@@ -63,46 +63,6 @@ body { background-color: var(--bg-color); color: var(--text-main); overflow-x: h
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- 🏆 CINEMATIC HERO SECTION --- */
-.hero-container { max-width: 1000px; margin: auto; padding: 80px 20px 40px; text-align: center; position: relative; z-index: 1; }
-.status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--brand-green); border-radius: 30px; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 25px; text-transform: uppercase; }
-.status-badge i { font-size: 0.6rem; animation: pulse 2s infinite; }
-@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-
-h1 { font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; text-transform: uppercase; color: var(--text-main); }
-h1 span { color: transparent; background: var(--brand-gradient); -webkit-background-clip: text; background-clip: text; }
-.sub-text { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); font-weight: 500; margin-bottom: 30px; max-width: 800px; margin-inline: auto; }
-
-/* Embedded Hero Video */
-.hero-video-wrapper {
-    max-width: 850px; margin: 0 auto 40px; border-radius: 20px; overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3); position: relative;
-    border: 1px solid var(--border-light); background: #000;
-    width: 100%; aspect-ratio: 16/9; display: block; cursor: pointer;
-}
-.hero-video-wrapper img {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: 0.3s; opacity: 0.9;
-}
-.hero-video-wrapper:hover img { opacity: 1; transform: scale(1.02); }
-.hero-video-wrapper .p {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 80px; height: 80px; background: var(--brand-green); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; z-index: 2; transition: 0.3s;
-}
-.hero-video-wrapper:hover .p { background: #ff0000; box-shadow: 0 0 30px rgba(255,0,0,0.6); transform: translate(-50%, -50%) scale(1.1); }
-.hero-video-wrapper.playing .p, .hero-video-wrapper.playing img { display: none !important; opacity: 0 !important; }
-.hero-video-wrapper iframe {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 5;
-}
-
-/* Buttons */
-.cta-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
-.btn { padding: 16px 35px; border-radius: 999px; font-size: 1.05rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; cursor: pointer; }
-.btn-primary { background: var(--brand-gradient); color: #fff !important; box-shadow: 0 10px 30px rgba(16,185,129,0.25); border: none; }
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(16,185,129,0.4); color: #fff;}
-.btn-secondary { background: var(--surface-color); color: var(--text-main); border: 1px solid var(--border-light); }
-.btn-secondary:hover { background: var(--input-bg); border-color: var(--brand-green); transform: translateY(-3px); color: var(--brand-green); }
-
 /* Section Headers */
 .section-title { text-align: center; font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 10px; color: var(--text-main); letter-spacing: -0.02em; }
 .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; max-width: 700px; margin-inline: auto; }
@@ -124,7 +84,7 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 .s input:focus { border-color: var(--brand-green); box-shadow: 0 0 0 4px rgba(16,185,129,0.1); }
 .s i { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 1.2rem; }
 
-/* Normal Filters (Sticky Removed as requested) */
+/* Normal Filters */
 .f { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
 .f button { padding: 8px 20px; background: var(--surface-color); border: 1px solid var(--border-light); color: var(--text-muted); border-radius: 30px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: 0.3s; }
 .f button.active, .f button:hover { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); transform: scale(1.05); }
@@ -167,88 +127,11 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 .wa { background: #25D366; color: #fff !important; font-size: 0.95rem; font-weight: 700; text-align: center; text-decoration: none; padding: 14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; border: none; }
 .wa:hover { background: #1ebd5a; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(37,211,102,0.3); color:#fff; }
 
-/* --- 🛡️ TRUST BAR --- */
-.trust-bar { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 1100px; margin: 40px auto 80px; padding: 40px; background: var(--surface-color); border-radius: 24px; border: 1px solid var(--border-light); box-shadow: 0 20px 40px rgba(0,0,0,0.02); }
-[data-theme="dark"] .trust-bar { box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.trust-item { text-align: center; flex: 1; min-width: 150px; }
-.trust-item h3 { font-size: 2.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 5px; letter-spacing: -0.02em; }
-.trust-item p { font-size: 0.85rem; color: var(--brand-green); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
-
-/* --- 💡 BENTO GRID --- */
-.bento-section { max-width: 1400px; margin: 80px auto; padding: 0 15px; }
-.bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.bento-card { background: var(--surface-color); border: 1px solid var(--border-light); padding: 40px; border-radius: 24px; transition: 0.3s; box-shadow: 0 15px 30px rgba(0,0,0,0.02); }
-[data-theme="dark"] .bento-card { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-.bento-card:hover { border-color: var(--brand-green); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(16,185,129,0.1); }
-.bento-card i.main-icon { font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 20px; display: block; }
-.bento-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--text-main); letter-spacing: -0.01em; }
-.bento-card p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 15px; }
-.bento-list { list-style: none; }
-.bento-list li { margin-bottom: 12px; color: var(--text-main); display: flex; align-items: flex-start; gap: 10px; font-weight: 500; font-size: 1rem; }
-.bento-list li i { color: var(--brand-green); margin-top: 5px; font-size: 1rem; }
-
-/* Highlight Block */
-.strategy-box { background: var(--surface-color); border: 1px solid var(--brand-green); border-radius: 24px; padding: 60px 40px; text-align: center; margin-top: 40px; position: relative; overflow: hidden; }
-.strategy-box::before { content:''; position:absolute; top:0;left:0;width:100%;height:100%; background: linear-gradient(135deg, rgba(16,185,129,0.05), transparent); z-index:0; }
-.strategy-box > * { position: relative; z-index: 1; }
-.strategy-box h2 { font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 15px; letter-spacing:-0.02em; }
-.strategy-box p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 30px; }
-.formula { display: inline-block; background: var(--input-bg); padding: 15px 30px; border-radius: 12px; font-family: monospace; font-size: 1.3rem; font-weight: 700; color: var(--brand-blue); border: 1px solid var(--border-light); letter-spacing: 1px; word-spacing: 5px; }
-
-/* --- ⚙️ TIMELINE --- */
-.timeline-section { background: var(--surface-color); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 100px 15px; margin: 80px 0; }
-.timeline-container { max-width: 1200px; margin: auto; position: relative; }
-.timeline-container::before { content: ''; position: absolute; top: 40px; left: 0; width: 100%; height: 2px; background: var(--border-light); z-index: 0; }
-.timeline-container::after { content: ''; position: absolute; top: 40px; left: 0; width: 0%; height: 2px; background: var(--brand-green); z-index: 0; transition: width 1.5s ease; }
-.timeline-container.active::after { width: 100%; }
-.timeline-grid { display: flex; justify-content: space-between; gap: 10px; position: relative; z-index: 1; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
-.timeline-step { flex: 1; min-width: 140px; text-align: center; }
-.t-icon { width: 80px; height: 80px; background: var(--bg-color); border: 2px solid var(--border-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; color: var(--text-muted); transition: 0.5s; position: relative; z-index: 2; }
-.timeline-container.active .timeline-step:nth-child(odd) .t-icon { border-color: var(--brand-green); color: var(--brand-green); box-shadow: 0 0 20px rgba(16,185,129,0.2); }
-.timeline-container.active .timeline-step:nth-child(even) .t-icon { border-color: var(--brand-blue); color: var(--brand-blue); box-shadow: 0 0 20px rgba(14,165,233,0.2); }
-.timeline-step h4 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
-
-.payment-banner { background: var(--input-bg); border: 1px dashed var(--brand-green); color: var(--text-main); padding: 25px; border-radius: 16px; max-width: 800px; margin: 50px auto 0; text-align: center; display: flex; align-items: center; justify-content: center; gap: 15px; font-weight: 600; font-size: 1.05rem; }
-.payment-banner i { color: var(--brand-green); font-size: 1.8rem; }
-
-/* --- 💬 TESTIMONIALS --- */
-.testimonial-section { max-width: 1200px; margin: 80px auto; text-align: center; overflow: hidden; padding: 0 15px; }
-.carousel { display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 0; scrollbar-width: none; }
-.carousel::-webkit-scrollbar { display: none; }
-.review-card { scroll-snap-align: center; flex: 0 0 400px; background: var(--surface-color); padding: 40px 35px; border-radius: 24px; border: 1px solid var(--border-light); text-align: left; position: relative; box-shadow: 0 15px 30px rgba(0,0,0,0.02); }
-[data-theme="dark"] .review-card { box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
-.review-card::before { content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: 25px; right: 30px; font-size: 3rem; color: var(--border-light); }
-.stars { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
-.review-text { font-size: 1.05rem; color: var(--text-main); font-style: italic; margin-bottom: 25px; line-height: 1.8; }
-.client-name { font-weight: 700; color: var(--brand-green); font-size: 1.1rem; }
-.client-role { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
-
-/* --- 📞 FINAL CONTACT CTA --- */
-.contact-section { max-width: 900px; margin: 100px auto; background: var(--surface-color); border: 1px solid var(--border-light); padding: 80px 40px; border-radius: 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-[data-theme="dark"] .contact-section { box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-.contact-section h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 15px; color: var(--text-main); letter-spacing: -0.02em; }
-.contact-section h2 span { color: var(--brand-blue); }
-.contact-section p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 40px; max-width: 650px; margin-inline: auto; }
-
-/* --- 🧠 HEAVY SEO SECTION --- */
-.seo-section { background: var(--surface-color); border-top: 1px solid var(--border-light); padding: 80px 20px; position: relative; z-index: 1; }
-.seo-inner { max-width: 1200px; margin: auto; }
-.seo-inner h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; margin-bottom: 25px; color: var(--text-main); line-height: 1.3; letter-spacing: -0.02em;}
-.seo-inner h3 { font-size: 1.5rem; font-weight: 700; color: var(--brand-green); margin-top: 40px; margin-bottom: 15px; }
-.seo-inner p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; line-height: 1.9; }
-.seo-inner strong { color: var(--text-main); font-weight: 600; }
-.seo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
-
 /* Responsive adjustments */
 @media(max-width:768px) {
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .grid { display: block; }
   .card { margin-bottom: 25px; } 
-  .timeline-container::before, .timeline-container::after { display: none; }
-  .timeline-grid { flex-direction: column; gap: 30px; }
-  .timeline-step { display: flex; align-items: center; text-align: left; gap: 20px; }
-  .t-icon { margin: 0; width: 60px; height: 60px; }
-  .contact-section { padding: 50px 20px; margin: 60px 15px; }
   .tab-content { display: block !important; }
   .tab-content:not(.active) { display: none !important; } 
 }
@@ -264,23 +147,6 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 
 <main class="page-wrapper">
 
-    <header class="hero-container reveal">
-      <div class="status-badge"><i class="fas fa-circle"></i> Available for Campaigns</div>
-      
-      <h1>Top Brand Promoters <br><span>& Models in BD</span></h1>
-      <p class="sub-text">Drive real sales with professional video models, voice artists, and content creators. We deliver premium talent paired with strategic execution for high-converting digital campaigns.</p>
-      
-      <div class="hero-video-wrapper" onclick="playInlineVideo(this, 't9L_tpxULPY', event)">
-          <img src="https://i.ytimg.com/vi_webp/t9L_tpxULPY/maxresdefault.webp" onerror="this.onerror=null; this.src='https://i.ytimg.com/vi_webp/t9L_tpxULPY/hqdefault.webp';" loading="lazy" alt="Multimedia Gen Intro Video">
-          <div class="p"><i class="fas fa-play"></i></div>
-      </div>
-
-      <div class="cta-group">
-        <a href="#roster-section" class="btn btn-secondary"><i class="fas fa-users"></i> Select Talent</a>
-        <a href="https://wa.me/8801915706375?text=Hello%20Multimedia%20Gen!%20I%20want%20to%20book%20a%20brand%20promoter." class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Book Now</a>
-      </div>
-    </header>
-
     <div class="container reveal" id="roster-section">
       <div style="text-align: center; margin-bottom: 40px;">
           <h2 class="section-title">Select Your Brand Promoter</h2>
@@ -288,7 +154,7 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
       </div>
 
       <div class="main-tabs">
-        <button class="mt-btn active" onclick="switchTab('promoters')"><i class="fas fa-users"></i> Brand Promoters <span>40</span></button>
+        <button class="mt-btn active" onclick="switchTab('promoters')"><i class="fas fa-users"></i> Brand Promoters <span>37</span></button>
         <button class="mt-btn" onclick="switchTab('voice')"><i class="fas fa-microphone-alt"></i> Voice Artists <span>18</span></button>
         <button class="mt-btn" onclick="switchTab('recent')" style="border-color: rgba(255,0,0,0.5);"><i class="fab fa-youtube" style="color: #ff0000;"></i> See Demo <span>New</span></button>
       </div>
@@ -341,205 +207,6 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 
     </div>
 
-    <section class="trust-bar reveal">
-      <div class="trust-item">
-        <h3>6000+</h3>
-        <p>Projects Completed</p>
-      </div>
-      <div class="trust-item">
-        <h3>100+</h3>
-        <p>Team Members</p>
-      </div>
-      <div class="trust-item">
-        <h3>40+</h3>
-        <p>Active Promoters</p>
-      </div>
-      <div class="trust-item">
-        <h3>Global</h3>
-        <p>Local & Int. Clients</p>
-      </div>
-    </section>
-
-    <section class="bento-section reveal">
-      <div class="bento-grid">
-        <div class="bento-card">
-          <i class="fas fa-exclamation-triangle main-icon" style="color: #ef4444;"></i>
-          <h3>Why Brand Promoters Matter</h3>
-          <p>Most businesses struggle because:</p>
-          <ul class="bento-list">
-            <li><i class="fas fa-times" style="color: #ef4444;"></i> Their ads don’t connect emotionally</li>
-            <li><i class="fas fa-times" style="color: #ef4444;"></i> Their content looks generic</li>
-            <li><i class="fas fa-times" style="color: #ef4444;"></i> Their brand lacks trust</li>
-          </ul>
-        </div>
-        
-        <div class="bento-card">
-          <i class="fas fa-lightbulb main-icon"></i>
-          <h3>Our Solution</h3>
-          <p>We use real human faces + strategic content to:</p>
-          <ul class="bento-list">
-            <li><i class="fas fa-check-circle"></i> Capture attention instantly</li>
-            <li><i class="fas fa-check-circle"></i> Build emotional connection</li>
-            <li><i class="fas fa-check-circle"></i> Increase audience trust</li>
-            <li><i class="fas fa-check-circle"></i> Improve ad performance</li>
-          </ul>
-        </div>
-
-        <div class="bento-card">
-          <i class="fas fa-bullseye main-icon" style="color: var(--brand-blue);"></i>
-          <h3>What You Can Use Them For</h3>
-          <ul class="bento-list">
-            <li><i class="fas fa-check"></i> Product Promotion Videos</li>
-            <li><i class="fas fa-check"></i> Facebook & Instagram Ads</li>
-            <li><i class="fas fa-check"></i> TikTok / Reels Content</li>
-            <li><i class="fas fa-check"></i> Brand Awareness Campaigns</li>
-            <li><i class="fas fa-check"></i> E-commerce Product Videos</li>
-            <li><i class="fas fa-check"></i> Service Promotion Ads</li>
-          </ul>
-        </div>
-
-        <div class="bento-card">
-          <i class="fas fa-star main-icon" style="color: var(--gold);"></i>
-          <h3>What Makes Our Talent Different</h3>
-          <ul class="bento-list">
-            <li><i class="fas fa-check"></i> Camera confidence & natural delivery</li>
-            <li><i class="fas fa-check"></i> Trained for marketing content</li>
-            <li><i class="fas fa-check"></i> Understand product positioning</li>
-            <li><i class="fas fa-check"></i> Work with script + direction</li>
-            <li><i class="fas fa-check"></i> Ready for ads, not just reels</li>
-          </ul>
-        </div>
-
-        <div class="bento-card">
-          <i class="fas fa-chart-line main-icon"></i>
-          <h3>Results You Can Expect</h3>
-          <p>With the right promoter + strategy:</p>
-          <ul class="bento-list">
-            <li><i class="fas fa-arrow-up"></i> Higher video watch time</li>
-            <li><i class="fas fa-arrow-up"></i> Better audience engagement</li>
-            <li><i class="fas fa-arrow-up"></i> More clicks on ads</li>
-            <li><i class="fas fa-arrow-up"></i> Increased sales conversion</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="strategy-box reveal">
-        <h2 class="section-title" style="margin-bottom: 15px;">The Strategic Advantage</h2>
-        <p>Most agencies only provide content. We provide content + strategy + execution.<br>OUR APPROACH:</p>
-        <div class="formula">Strategy + Creator + Editing + Ads = Results</div>
-      </div>
-    </section>
-
-    <section class="timeline-section reveal" id="process-section">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-sub">A simple, streamlined, professional workflow to ensure absolute perfection.</p>
-      
-      <div class="timeline-container" id="timeline">
-        <div class="timeline-grid">
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-user-check"></i></div>
-            <h4>1. Choose Promoter</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">Select your ideal match.</p>
-          </div>
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-box-open"></i></div>
-            <h4>2. Share Product</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">Tell us about your brand.</p>
-          </div>
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-link"></i></div>
-            <h4>3. Provide Reference</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">Optional examples/ideas.</p>
-          </div>
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-brain"></i></div>
-            <h4>4. Plan Strategy</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">We outline the content strategy.</p>
-          </div>
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-video"></i></div>
-            <h4>5. Shoot & Edit</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">Production & cinematic editing.</p>
-          </div>
-          <div class="timeline-step">
-            <div class="t-icon"><i class="fas fa-rocket"></i></div>
-            <h4>6. Delivery</h4>
-            <p style="color:var(--text-muted); font-size:0.9rem;">Ready-to-run ad content.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="payment-banner">
-        <i class="fas fa-shield-alt"></i>
-        <span>Secure Payment Policy: 50% Advance to start the project. Remaining 50% upon project completion before final delivery.</span>
-      </div>
-
-      <div style="text-align: center; margin-top: 50px;">
-        <a href="https://wa.me/8801915706375?text=Hello%20Multimedia%20Gen!%20I%20want%20to%20book%20a%20brand%20promoter." class="btn btn-primary" target="_blank" rel="noopener" style="font-size: 1.1rem; padding: 18px 35px;"><i class="fab fa-whatsapp"></i> Book Your Promoter Now</a>
-      </div>
-    </section>
-
-    <section class="testimonial-section reveal">
-      <h2 class="section-title">Client Success Stories</h2>
-      <p class="section-sub">See why top brands trust our promoters and production team.</p>
-      
-      <div class="carousel">
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p class="review-text">"Multimedia Gen completely transformed our product ads. The brand promoter was perfectly trained and delivered the hook flawlessly. Our sales doubled in the first week of running the new creatives!"</p>
-          <div class="client-name">Sarah Ahmed</div>
-          <div class="client-role">E-commerce Founder</div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p class="review-text">"Hands down the best video production company in Bangladesh! Their models and editing team are top-tier. The 50/50 payment process was very transparent and professional."</p>
-          <div class="client-name">David L.</div>
-          <div class="client-role">Marketing Director</div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p class="review-text">"We needed a highly professional face for our real estate promo. The talent provided by Multimedia Gen was exceptional. Strategy + Execution = Amazing Results. Highly recommended!"</p>
-          <div class="client-name">Rezaul Karim</div>
-          <div class="client-role">Real Estate Agency</div>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p class="review-text">"Stop wasting money on low-performing ads. Partnering with them for our TikTok and Reels campaigns gave us the highest ROAS we've seen this year."</p>
-          <div class="client-name">J. Thompson</div>
-          <div class="client-role">Tech Startup CEO</div>
-        </div>
-      </div>
-      
-      <a href="https://g.page/r/CYrm2ggHJjMLEBM/review" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top: 40px;"><i class="fab fa-google"></i> View All Google Reviews</a>
-    </section>
-
-    <section class="contact-section reveal">
-      <h2>Ready to Promote Your Brand <br><span style="color:var(--brand-blue)">The Right Way?</span></h2>
-      <p>Stop wasting money on low-performing ads. Start using professional brand promoters + strategic content to generate real sales.</p>
-      <a href="https://wa.me/8801915706375?text=Hello%20Multimedia%20Gen!%20I%20am%20ready%20to%20promote%20my%20brand%20the%20right%20way." class="btn btn-primary" target="_blank" rel="noopener" style="font-size: 1.15rem; padding: 20px 40px;"><i class="fab fa-whatsapp"></i> Book Your Promoter Now</a>
-    </section>
-
-    <section class="seo-section reveal">
-      <div class="seo-inner">
-        <h2>Elevate Your Vision with the Best Brand Promoter Agency in Bangladesh</h2>
-        <p>In today’s hyper-competitive digital landscape, standing out requires more than just standard content; it demands high-end, conversion-driven storytelling. As the <strong>Best Brand Promoter Company in Bangladesh</strong>, Multimedia Gen bridges the gap between creative vision and measurable market performance. We understand that modern consumers do not just buy products—they buy trust. By utilizing our highly trained professionals, you instantly inject credibility and human connection into your marketing campaigns.</p>
-        
-        <div class="seo-grid">
-          <div>
-            <h3>The Premier Model Agency in Dhaka</h3>
-            <p>Whether you are searching for a premium <strong>Model Agency in Dhaka</strong> to cast the perfect face for your next nationwide campaign or looking for niche talent for a social media burst, our curated roster is second to none. We provide models who aren't just visually striking, but who understand camera presence, script delivery, and the psychology behind a <strong>product promotion model</strong>. They are trained to hook the viewer in the first three seconds, ensuring your ad spend translates into tangible ROI.</p>
-          </div>
-          <div>
-            <h3>Top Marketing Company in Sylhet</h3>
-            <p>Strategically positioned to serve both local and global clients, we are recognized as the <strong>Top Marketing Company in Sylhet</strong>. We don't just hand you a video and walk away. Our holistic approach encompasses the entire digital spectrum—from hiring a <strong>video ad model Bangladesh</strong> to executing full-scale <strong>influencer marketing Bangladesh</strong> strategies. We build the funnel, craft the creative, and deploy the assets that make your brand inescapable in the digital world.</p>
-          </div>
-        </div>
-
-        <h3>The Leading Video Production Company in Bangladesh</h3>
-        <p>We pride ourselves on being recognized as the absolute <strong>Best Video Editing Agency in Bangladesh</strong> and the foremost <strong>Video Production Company Bangladesh</strong>. Our post-production team operates at a global standard. We utilize advanced retention-editing techniques, dynamic motion graphics, and psychological color grading to ensure every piece of content we produce is a high-performing asset. As a full-suite <strong>Promotional Ad Agency</strong>, we specialize in end-to-end <strong>Video Advertising Campaigns</strong>. From writing the initial hook to the final color correction, our team of over 100 dedicated experts ensures that your brand’s message is delivered with maximum impact.</p>
-      </div>
-    </section>
-
 </main>
 
 <?php include 'components/footer.php'; ?>
@@ -552,7 +219,6 @@ h1 span { color: transparent; background: var(--brand-gradient); -webkit-backgro
 <script>
 // --- EXACT DATA ARRAYS ---
 const rawPromoters = [
-  {name:"Zinnath Zafar Hiya",gender:"female",rating:4.8,video:"O6FPsrTBuQM",demo:"1C59iZM4t8PnI1MbgLLUBcy7jubvDvAhO"},
   {name:"Ashik Ahamed",gender:"male",rating:5.0,video:"wdaYyyWUN5M",demo:"https://youtube.com/shorts/wdaYyyWUN5M"},
   {name:"RJ Opu",gender:"male",rating:5.0,video:"t9L_tpxULPY",demo:"19Xj9vZmPOHEwGCAR8N30JS8LDusj42g4"},
   {name:"Sheikh Nusrat Priya",gender:"female",rating:5.0,video:"vOBS0chS0v8",demo:"1ZpNxsKCkFDhAlYfEaYflDMP8SDSk0sJB"},
@@ -588,8 +254,6 @@ const rawPromoters = [
   {name:"Urmi Islam",gender:"female",rating:5.0,video:"NE5MmC8I6WU",demo:"1dWGnPoH8-hD7j3m3IG0ylpVg-PWzshEr"},
   {name:"Reya Rahman",gender:"female",rating:5.0,video:"Cu-zf5LBufE",demo:"1B-bH2UuGNrrJUre5CHHyDLaeZu4QWnCZ"},
   {name:"Abu Sayeed Mohammad Nafi",gender:"male",rating:5.0,video:"3Cm09r56Agk",demo:"1aIja5oaEIufZR7MtDyY7vkP19caNwTVQ", loc:"Rampura, Dhaka"},
-  {name:"Asraf Ahmed",gender:"male",rating:4.5,video:"9qgSl0r9S8g",demo:"https://youtube.com/shorts/9qgSl0r9S8g"},
-  {name:"Sabrina Tanjin Tanfe",gender:"female",rating:4.5,video:"uxgug5hB3Yc",demo:"https://www.facebook.com/share/1DumLiQoqD/", loc:"Uttara, Dhaka"},
   {name:"Md Usman Gani",gender:"male",rating:5.0,video:"Iz-hK6N95EM",demo:"https://mdusmangani.com", loc:"Moulvibazar 3200, Sylhet"},
   {name:"Sumaiya Akther Putul",gender:"female",rating:4.9,video:"Gd6YCmP2nCE",demo:"1YPog2b5cGxhPKJxmWT-Oqm68aRCED78x"}
 ];
@@ -619,7 +283,7 @@ const voiceArtists = [
 const premiumNames = new Set(["RJ Opu", "Abu Sayeed Mohammad Nafi", "Ashik Ahamed", "Sheikh Nusrat Priya", "Niyaz Afridi", "Moumita Debnath", "Fahad Abdullah Al Azad", "Nahar Barna", "Tahsin Hossain Rahi", "Raika Rowshan Oishy", "Habiba", "Eshrat Jahan Disha", "Reya Rahman", "Md Usman Gani"]);
 rawPromoters.forEach(p => { p.isTopRanked = premiumNames.has(p.name); });
 rawPromoters.sort((a, b) => {
-  const pushToEnd = ["Asraf Ahmed", "Sabrina Tanjin Tanfe"];
+  const pushToEnd = [];
   const aToEnd = pushToEnd.indexOf(a.name); const bToEnd = pushToEnd.indexOf(b.name);
   if (aToEnd !== -1 && bToEnd !== -1) return aToEnd - bToEnd;
   if (aToEnd !== -1) return 1; if (bToEnd !== -1) return -1;
@@ -717,7 +381,6 @@ function renderGrid(arr, filterVal, containerId, searchInputId, type) {
 }
 
 // ✅ 100% BULLETPROOF MOBILE VIDEO PLAY FIX
-// event.preventDefault() and event.stopPropagation() ensure the click isn't swallowed by mobile touch events
 window.playInlineVideo = function(el, id, event) {
   if (event) {
       event.preventDefault();
