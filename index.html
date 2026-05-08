@@ -154,7 +154,7 @@ body { background-color: var(--bg-color); color: var(--text-main); overflow-x: h
       </div>
 
       <div class="main-tabs">
-        <button class="mt-btn active" onclick="switchTab('promoters')"><i class="fas fa-users"></i> Brand Promoters <span>37</span></button>
+        <button class="mt-btn active" onclick="switchTab('promoters')"><i class="fas fa-users"></i> Brand Promoters <span>36</span></button>
         <button class="mt-btn" onclick="switchTab('voice')"><i class="fas fa-microphone-alt"></i> Voice Artists <span>18</span></button>
         <button class="mt-btn" onclick="switchTab('recent')" style="border-color: rgba(255,0,0,0.5);"><i class="fab fa-youtube" style="color: #ff0000;"></i> See Demo <span>New</span></button>
       </div>
@@ -250,7 +250,6 @@ const rawPromoters = [
   {name:"Maha",gender:"female",rating:4.8,video:"A7bZFKO7Gr4",demo:"https://www.facebook.com/share/16ypBJH5R3/", loc:"Dhaka"},
   {name:"Srabon Ahmed Sani",gender:"male",rating:4.9,video:"KQ7z5MBU52w",demo:"1fs2JJYuNrASWGmk0aQuqJxYO4V8UasRO"},
   {name:"Mainur Afrose Dipa",gender:"female",rating:5.0,video:"vJ5m6QEbbLQ",demo:"https://youtube.com/shorts/vJ5m6QEbbLQ"},
-  {name:"Sabiha Rahman Ruponti",gender:"female",rating:3.0,video:"fu0hNUgszDs",demo:"1KLbIhdIUlye9da1-z-j561oN4xIEnON0"},
   {name:"Urmi Islam",gender:"female",rating:5.0,video:"NE5MmC8I6WU",demo:"1dWGnPoH8-hD7j3m3IG0ylpVg-PWzshEr"},
   {name:"Reya Rahman",gender:"female",rating:5.0,video:"Cu-zf5LBufE",demo:"1B-bH2UuGNrrJUre5CHHyDLaeZu4QWnCZ"},
   {name:"Abu Sayeed Mohammad Nafi",gender:"male",rating:5.0,video:"3Cm09r56Agk",demo:"1aIja5oaEIufZR7MtDyY7vkP19caNwTVQ", loc:"Rampura, Dhaka"},
@@ -283,10 +282,6 @@ const voiceArtists = [
 const premiumNames = new Set(["RJ Opu", "Abu Sayeed Mohammad Nafi", "Ashik Ahamed", "Sheikh Nusrat Priya", "Niyaz Afridi", "Moumita Debnath", "Fahad Abdullah Al Azad", "Nahar Barna", "Tahsin Hossain Rahi", "Raika Rowshan Oishy", "Habiba", "Eshrat Jahan Disha", "Reya Rahman", "Md Usman Gani"]);
 rawPromoters.forEach(p => { p.isTopRanked = premiumNames.has(p.name); });
 rawPromoters.sort((a, b) => {
-  const pushToEnd = [];
-  const aToEnd = pushToEnd.indexOf(a.name); const bToEnd = pushToEnd.indexOf(b.name);
-  if (aToEnd !== -1 && bToEnd !== -1) return aToEnd - bToEnd;
-  if (aToEnd !== -1) return 1; if (bToEnd !== -1) return -1;
   const forcedOrder = ["RJ Opu", "Abu Sayeed Mohammad Nafi", "Ashik Ahamed"];
   const aIndex = forcedOrder.indexOf(a.name); const bIndex = forcedOrder.indexOf(b.name);
   if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
